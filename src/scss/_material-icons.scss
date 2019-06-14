@@ -1,0 +1,42 @@
+@import '~material-icons/iconfont/mixins';
+
+// Filled
+
+$material-icons-font-path: '~material-icons/iconfont/';
+@import '~material-icons/iconfont/variables';
+
+@font-face {
+  font-family: $material-icons-font-family;
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$material-icons-font-file}.eot'); /* For IE6-8 */
+  src: local($material-icons-font-family), local($material-icons-font-name),
+    url('#{$material-icons-font-file}.woff2') format('woff2'), url('#{$material-icons-font-file}.woff') format('woff'),
+    url('#{$material-icons-font-file}.ttf') format('truetype');
+}
+
+.material-icons {
+  @include material-icons();
+}
+
+// Outlined
+
+$material-icons-font-path: 'material-icons-outlined/';
+$material-icons-font-family: 'Material Icons Outlined';
+$material-icons-font-name: 'MaterialIconsOutlined';
+
+@import '~material-icons/iconfont/variables';
+
+@font-face {
+  font-family: $material-icons-font-family;
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$material-icons-font-file}.eot'); /* For IE6-8 */
+  src: local($material-icons-font-family), local($material-icons-font-name),
+    url('#{$material-icons-font-file}.woff2') format('woff2'), url('#{$material-icons-font-file}.woff') format('woff'),
+    url('#{$material-icons-font-file}.ttf') format('truetype');
+}
+
+.material-icons-outlined {
+  @include material-icons();
+}

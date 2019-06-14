@@ -1,0 +1,118 @@
+// Material
+
+@import '~@angular/material/theming';
+
+$theme-primary: mat-palette($mat-blue-gray, 700, 500, 900);
+$theme-accent: mat-palette($mat-amber);
+$theme-warn: mat-palette($mat-red);
+
+$theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+$background: map-get($theme, background);
+$foreground: map-get($theme, foreground);
+
+$typography-config: mat-typography-config();
+
+// Bootstrap
+
+$emphasized-link-hover-darken-percentage: 15%;
+$enable-deprecation-messages: true;
+$enable-gradients: false;
+$enable-rounded: true;
+$enable-shadows: true;
+
+$spacer: 16px;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 599px,
+  md: 768px,
+  lg: 959px,
+  xl: 1200px
+);
+
+$embed-responsive-aspect-ratios: ((21 9), (16 9), (4 3), (1 1));
+
+$black: black;
+$white: white;
+
+$theme-colors: (
+  primary: map-get($theme-primary, default),
+  accent: map-get($theme-accent, default),
+  warn: map-get($theme-warn, default),
+  dark: $dark-primary-text,
+  light: $light-primary-text
+);
+
+$body-bg: $white;
+$body-color: mat-color($foreground, secondary-text);
+$text-muted: mat-color($foreground, disabled-text);
+
+$border-width: 1px;
+$border-color: mat-color($foreground, disabled-text);
+$border-radius: 25%;
+$border-radius-lg: 30%;
+$border-radius-sm: 20%;
+$rounded-pill: 50rem;
+
+$box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.075);
+$box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
+$box-shadow-lg: 0 1rem 3rem rgba($black, 0.175);
+
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex;
+$overflows: auto, hidden;
+$positions: static, relative, absolute, fixed, sticky;
+
+$zindex-sticky: 1020;
+$zindex-fixed: 1030;
+
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+$font-weight-lighter: lighter;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 500;
+$font-weight-bolder: bolder;
+
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  auto: auto
+);
+
+// Image thumbnails
+
+$thumbnail-padding: 0.25rem;
+$thumbnail-bg: $body-bg;
+$thumbnail-border-width: $border-width;
+$thumbnail-border-color: map-get($mat-gray, 300);
+$thumbnail-border-radius: $border-radius;
+$thumbnail-box-shadow: 0 1px 2px rgba($black, 0.075);
+
+// Figures
+
+$figure-caption-font-size: 90%;
+$figure-caption-color: map-get($mat-gray, 600);
+
+// Others
+
+$icon-sizes: (18px, 24px, 36px, 48px);
+
+$sidebar-width: 300px;
+$sidebar-background: mat-color($theme-primary, darker);
+
+$toolbar-height: 56px;
+$toolbar-height-sm: 40px;
+
+$user-avatar-size: 100px;
+$user-avatar-border-width: 8px;

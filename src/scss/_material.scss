@@ -1,0 +1,15 @@
+@include mat-core($typography-config);
+@include angular-material-theme($theme);
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: $toolbar-height !important;
+
+  @media screen and ($mat-xsmall) {
+    height: $toolbar-height-sm !important;
+  }
+}
+
+.mat-toolbar-multiple-rows {
+  min-height: $toolbar-height !important;
+}

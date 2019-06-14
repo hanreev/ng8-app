@@ -1,0 +1,9 @@
+<div class="mat-drawer-backdrop" (click)="_onBackdropClicked()" *ngIf="hasBackdrop"
+  [class.mat-drawer-shown]="_isShowingBackdrop()"></div>
+
+<ng-content select="app-sidenav"></ng-content>
+<ng-content select="app-sidenav-content"></ng-content>
+
+<app-sidenav-content *ngIf="!_content" cdkScrollable>
+  <ng-content></ng-content>
+</app-sidenav-content>

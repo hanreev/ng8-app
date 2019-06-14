@@ -1,0 +1,83 @@
+<app-sidenav-container class="full-container">
+  <app-sidenav #sidebar mode="side" collapsible collapsedWidth="64" class="sidebar">
+    <div class="brand">
+      <img src="/assets/images/logo.svg" alt="" class="brand-logo">
+      <span class="brand-title text-uppercase">{{ title }}</span>
+    </div>
+
+    <div fxLayout="column" class="user-profile">
+      <ng-container *ngIf="user">
+        <img src="/assets/images/avatar.jpg" alt="avatar" class="user-avatar">
+        <div class="user-info">
+          <span class="user-display-name">{{ user.displayName }}</span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!user">
+        <img src="/assets/images/avatar.jpg" alt="avatar" class="user-avatar">
+        <div class="user-info">
+          <span class="user-display-name">{{ title }}</span>
+        </div>
+      </ng-container>
+    </div>
+
+    <div [perfectScrollbar]="{ suppressScrollX: true }" class="navigation">
+      <h3 matSubheader>Navigation</h3>
+      <mat-accordion displayMode="flat">
+        <ng-container *ngFor="let item of navItems">
+          <mat-divider *ngIf="item === 'divider'"></mat-divider>
+
+          <mat-expansion-panel *ngIf="item !== 'divider'" [hideToggle]="!item.children" [disabled]="!item.children">
+            <mat-expansion-panel-header>
+              <div class="d-flex align-items-center">
+                <mat-icon *ngIf="item.icon" fontSet="outlined">{{ item.icon }}</mat-icon>
+                <span class="nav-title">{{ item.title }}</span>
+              </div>
+            </mat-expansion-panel-header>
+            <mat-nav-list *ngIf="item.children">
+              <mat-list-item *ngFor="let child of item.children">
+                <span>{{ child.title }}</span>
+              </mat-list-item>
+            </mat-nav-list>
+          </mat-expansion-panel>
+        </ng-container>
+      </mat-accordion>
+    </div>
+  </app-sidenav>
+
+  <app-sidenav-content class="content fixed-toolbar">
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button (click)="sidebar.toggle()" class="mr-3">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-icon-button class="mx-2">
+        <mat-icon fontSet="outlined" matBadge="10" matBadgeColor="accent" matBadgeSize="small">mail</mat-icon>
+      </button>
+      <button mat-icon-button class="mx-2">
+        <mat-icon fontSet="outlined" matBadge="10" matBadgeColor="warn" matBadgeSize="small">notifications</mat-icon>
+      </button>
+      <button mat-icon-button class="mx-2">
+        <mat-icon fontSet="outlined" matBadge="10" matBadgeColor="accent" matBadgeSize="small">chat_bubble_outline
+        </mat-icon>
+      </button>
+
+      <span class="mr-auto"></span>
+
+      <button *ngIf="!user" mat-button (click)="login()">Login</button>
+      <button *ngIf="user" mat-button [matMenuTriggerFor]="userMenu">{{ user.displayName }}</button>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+      <button mat-icon-button (click)="rightPanel.toggle()" class="ml-3">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <main perfectScrollbar>
+      <router-outlet></router-outlet>
+    </main>
+  </app-sidenav-content>
+  <app-sidenav #rightPanel mode="over" position="end" class="right-panel">
+    <p>Right Panel</p>
+  </app-sidenav>
+</app-sidenav-container>
